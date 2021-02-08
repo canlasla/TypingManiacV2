@@ -37,7 +37,7 @@ export default class Game {
 		)
 			return;
 		this.lives = 3;
-		this.score = 0;
+		this.scoreElement.score = 0;
 		this.gameObjects = [
 			new Word(
 				this,
@@ -45,6 +45,7 @@ export default class Game {
 				ctx
 			),
 		];
+		this.input.inputElement.value = '';
 		this.gamestate = GAMESTATE.RUNNING;
 	}
 

@@ -6,7 +6,7 @@ export default class InputHandler {
 				case 'Escape':
 					game.togglePause();
 					break;
-				case 'Space':
+				case 'ControlLeft' || 'ControlRight':
 					game.start(ctx);
 					break;
 			}
