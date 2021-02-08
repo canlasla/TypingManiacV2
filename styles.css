@@ -10,11 +10,11 @@
 
 #title {
 	color: white;
-
 	text-align: center;
 }
 
-#canvas-container {
+#canvas-container,
+#input-container {
 	width: 100%;
 	text-align: center;
 }
@@ -24,4 +24,9 @@
 	/* background-color: tomato; */
 	width: 800px;
 	height: 600px;
+}
+
+#input {
+	display: inline;
+	color: white;
 }
