@@ -45,7 +45,6 @@ export default class Game {
 				ctx
 			),
 		];
-		console.log(this.gameObjects);
 		this.gamestate = GAMESTATE.RUNNING;
 	}
 
@@ -100,7 +99,7 @@ export default class Game {
 			ctx.fillStyle = 'rgba(0,0,0,0.5)';
 			ctx.fill();
 
-			ctx.font = '30px Arial';
+			ctx.font = '30px Consolas';
 			ctx.fillStyle = 'white';
 			ctx.textAlign = 'center';
 			ctx.fillText('Paused', this.gameWidth / 2, this.gameHeight / 2);
@@ -111,13 +110,27 @@ export default class Game {
 			ctx.fillStyle = 'rgba(0,0,0,1)';
 			ctx.fill();
 
-			ctx.font = '30px Arial';
-			ctx.fillStyle = 'white';
+			ctx.font = '50px Consolas';
+			ctx.fillStyle = 'cyan';
+			ctx.textAlign = 'center';
+			ctx.fillText('Typing Maniac', this.gameWidth / 2, this.gameHeight / 2);
+
+			ctx.font = '25px Consolas';
+			ctx.fillStyle = 'lime';
 			ctx.textAlign = 'center';
 			ctx.fillText(
 				'Press SPACEBAR To Start',
 				this.gameWidth / 2,
-				this.gameHeight / 2
+				this.gameHeight / 2 + 40
+			);
+
+			ctx.font = '25px Consolas';
+			ctx.fillStyle = 'lime';
+			ctx.textAlign = 'center';
+			ctx.fillText(
+				'Type the falling words to earn a point',
+				this.gameWidth / 2,
+				this.gameHeight / 2 + 75
 			);
 		}
 		if (this.gamestate === GAMESTATE.GAMEOVER) {
@@ -125,10 +138,19 @@ export default class Game {
 			ctx.fillStyle = 'rgba(0,0,0,1)';
 			ctx.fill();
 
-			ctx.font = '30px Arial';
-			ctx.fillStyle = 'white';
+			ctx.font = '30px Consolas';
+			ctx.fillStyle = 'red';
 			ctx.textAlign = 'center';
 			ctx.fillText('GAME OVER', this.gameWidth / 2, this.gameHeight / 2);
+
+			ctx.font = '25px Consolas';
+			ctx.fillStyle = 'cyan';
+			ctx.textAlign = 'center';
+			ctx.fillText(
+				'Score: ' + this.scoreElement.score,
+				this.gameWidth / 2,
+				this.gameHeight / 2 + 40
+			);
 		}
 	}
 

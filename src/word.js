@@ -7,9 +7,10 @@ export default class Word {
 		this.game = game;
 
 		this.position = {
-			x: Math.floor(
-				Math.random() * (this.gameWidth - ctx.measureText(this.word).width)
-			),
+			// x: Math.floor(
+			// 	Math.random() * (this.gameWidth - ctx.measureText(this.word).width)
+			// ),
+			x: 0,
 			y: 0,
 		};
 		this.speed = game.speed + Math.floor(Math.random() * 2);

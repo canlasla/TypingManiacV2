@@ -19,7 +19,6 @@ function gameLoop(timestamp) {
 
 	game.update(deltaTime, ctx);
 	game.draw(ctx);
-	console.log(game.gamestate);
 	requestAnimationFrame(gameLoop);
 }
 

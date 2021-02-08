@@ -5,7 +5,7 @@ export default class Score {
 		this.game = game;
 		this.score = 0;
 		this.position = {
-			x: 10,
+			x: 55,
 			y: this.gameHeight - 10,
 		};
 	}
