@@ -114,24 +114,46 @@ export default class Game {
 			ctx.font = '50px Consolas';
 			ctx.fillStyle = 'cyan';
 			ctx.textAlign = 'center';
-			ctx.fillText('Typing Maniac', this.gameWidth / 2, this.gameHeight / 2);
-
-			ctx.font = '25px Consolas';
-			ctx.fillStyle = 'lime';
-			ctx.textAlign = 'center';
 			ctx.fillText(
-				'Press SPACEBAR To Start',
+				'Typing Maniac',
 				this.gameWidth / 2,
-				this.gameHeight / 2 + 40
+				this.gameHeight / 2 - 40
 			);
 
 			ctx.font = '25px Consolas';
 			ctx.fillStyle = 'lime';
 			ctx.textAlign = 'center';
 			ctx.fillText(
-				'Type the falling words to earn a point',
+				'Type the falling words to earn points',
 				this.gameWidth / 2,
-				this.gameHeight / 2 + 75
+				this.gameHeight / 2
+			);
+
+			ctx.font = '25px Consolas';
+			ctx.fillStyle = 'lime';
+			ctx.textAlign = 'center';
+			ctx.fillText(
+				'You have three lives',
+				this.gameWidth / 2,
+				this.gameHeight / 2 + 30
+			);
+
+			ctx.font = '25px Consolas';
+			ctx.fillStyle = 'yellow';
+			ctx.textAlign = 'center';
+			ctx.fillText(
+				'Press CTRL To Start',
+				this.gameWidth / 2,
+				this.gameHeight / 2 + 60
+			);
+
+			ctx.font = '25px Consolas';
+			ctx.fillStyle = 'yellow';
+			ctx.textAlign = 'center';
+			ctx.fillText(
+				'Press ESC to pause',
+				this.gameWidth / 2,
+				this.gameHeight / 2 + 90
 			);
 		}
 		if (this.gamestate === GAMESTATE.GAMEOVER) {
@@ -151,6 +173,15 @@ export default class Game {
 				'Score: ' + this.scoreElement.score,
 				this.gameWidth / 2,
 				this.gameHeight / 2 + 40
+			);
+
+			ctx.font = '25px Consolas';
+			ctx.fillStyle = 'lime';
+			ctx.textAlign = 'center';
+			ctx.fillText(
+				'Press CTRL To Restart',
+				this.gameWidth / 2,
+				this.gameHeight - 10
 			);
 		}
 	}
