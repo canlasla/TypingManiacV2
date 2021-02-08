@@ -1,4 +1,5 @@
 import Word from '/src/word.js';
+import Score from '/src/score.js';
 import { wordArray } from '/src/wordsarray.js';
 
 const GAMESTATE = {
@@ -14,7 +15,7 @@ export default class Game {
 		this.gameHeight = gameHeight;
 		this.input = input;
 		this.gamestate = GAMESTATE.RUNNING;
-
+		this.scoreElement = new Score(this, ctx);
 		this.speed = 1;
 		this.gameObjects = [
 			new Word(
@@ -55,7 +56,6 @@ export default class Game {
 		var i = 0;
 		for (i = 0; i < this.gameObjects.length; i++) {
 			var gone = this.gameObjects[i].update(deltaTime);
-			console.log(this.gameObjects[i].word);
 
 			if (gone) {
 				this.gameObjects = this.gameObjects.filter((word) => !word.gone);
@@ -80,12 +80,23 @@ export default class Game {
 			if (input.inputElement.value == this.gameObjects[i].word) {
 				this.gameObjects[i].gone = true;
 				input.inputElement.value = '';
+				this.scoreElement.score++;
+				console.log(this.scoreElement.score);
 			}
 		}
 	}
 
 	draw(ctx) {
 		[...this.gameObjects].forEach((object) => object.draw(ctx));
+
+		// ctx.font = '20px Consolas';
+		// ctx.fillStyle = 'white';
+		// ctx.fillText(
+		// 	'Score: ' + this.scoreElement.score,
+		// 	this.scoreElement.x,
+		// 	this.scoreElement.y
+		// );
+		this.scoreElement.draw(ctx);
 
 		if (this.gamestate === GAMESTATE.PAUSED) {
 			ctx.rect(0, 0, this.gameWidth, this.gameHeight);
