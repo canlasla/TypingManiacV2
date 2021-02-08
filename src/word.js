@@ -29,7 +29,7 @@ export default class Word {
 		this.position.y += this.speed;
 
 		if (this.position.y > this.gameHeight) {
-			this.game.lives--;
+			this.game.livesElement.lives--;
 			this.gone = true;
 			return true;
 		}

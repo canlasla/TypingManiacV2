@@ -1,5 +1,6 @@
 import Word from '/src/word.js';
 import Score from '/src/score.js';
+import Lives from '/src/lives.js';
 import InputHandler from '/src/input.js';
 
 import { wordArray } from '/src/wordsarray.js';
@@ -26,7 +27,7 @@ export default class Game {
 				ctx
 			),
 		];
-		this.lives = 3;
+		this.livesElement = new Lives(this, ctx);
 		this.input = new InputHandler(this, ctx);
 	}
 
@@ -36,7 +37,7 @@ export default class Game {
 			this.gamestate !== GAMESTATE.GAMEOVER
 		)
 			return;
-		this.lives = 3;
+		this.livesElement.lives = 3;
 		this.scoreElement.score = 0;
 		this.gameObjects = [
 			new Word(
@@ -50,7 +51,7 @@ export default class Game {
 	}
 
 	update(deltaTime, ctx) {
-		if (this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
+		if (this.livesElement.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
 
 		if (
 			this.gamestate === GAMESTATE.PAUSED ||
@@ -94,7 +95,7 @@ export default class Game {
 		[...this.gameObjects].forEach((object) => object.draw(ctx));
 
 		this.scoreElement.draw(ctx);
-
+		this.livesElement.draw(ctx);
 		if (this.gamestate === GAMESTATE.PAUSED) {
 			ctx.rect(0, 0, this.gameWidth, this.gameHeight);
 			ctx.fillStyle = 'rgba(0,0,0,0.5)';
