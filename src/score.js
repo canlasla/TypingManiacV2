@@ -5,7 +5,7 @@ export default class Score {
 		this.game = game;
 		this.score = 0;
 		this.position = {
-			x: 55,
+			x: ctx.measureText('Score: ' + this.score).width + 15,
 			y: this.gameHeight - 10,
 		};
 	}
