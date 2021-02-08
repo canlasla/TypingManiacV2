@@ -9,9 +9,10 @@ const GAMESTATE = {
 };
 
 export default class Game {
-	constructor(gameWidth, gameHeight, ctx) {
+	constructor(gameWidth, gameHeight, ctx, input) {
 		this.gameWidth = gameWidth;
 		this.gameHeight = gameHeight;
+		this.input = input;
 		this.gamestate = GAMESTATE.RUNNING;
 
 		this.speed = 1;
@@ -39,7 +40,7 @@ export default class Game {
 		this.gamestate = GAMESTATE.RUNNING;
 	}
 
-	update(deltaTime, ctx) {
+	update(deltaTime, ctx, input) {
 		// if (this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
 
 		// if (
@@ -54,6 +55,8 @@ export default class Game {
 		var i = 0;
 		for (i = 0; i < this.gameObjects.length; i++) {
 			var gone = this.gameObjects[i].update(deltaTime);
+			console.log(this.gameObjects[i].word);
+
 			if (gone) {
 				this.gameObjects = this.gameObjects.filter((word) => !word.gone);
 				this.gameObjects.push(
@@ -72,6 +75,11 @@ export default class Game {
 						)
 					);
 				}
+			}
+
+			if (input.inputElement.value == this.gameObjects[i].word) {
+				this.gameObjects[i].gone = true;
+				input.inputElement.value = '';
 			}
 		}
 	}

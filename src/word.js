@@ -31,6 +31,6 @@ export default class Word {
 			this.gone = true;
 			return true;
 		}
-		return false;
+		return this.gone;
 	}
 }

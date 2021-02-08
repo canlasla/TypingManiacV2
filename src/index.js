@@ -1,4 +1,5 @@
 import Game from '/src/game.js';
+import InputHandler from '/src/input.js';
 
 var canvas = document.getElementById('gameScreen');
 var ctx = canvas.getContext('2d');
@@ -9,6 +10,7 @@ const GAME_WIDTH = canvas.getBoundingClientRect().width;
 const GAME_HEIGHT = canvas.getBoundingClientRect().height;
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT, ctx);
+let input = new InputHandler();
 
 let lastTime = 0;
 function gameLoop(timestamp) {
@@ -17,7 +19,7 @@ function gameLoop(timestamp) {
 
 	ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
 
-	game.update(deltaTime, ctx);
+	game.update(deltaTime, ctx, input);
 	game.draw(ctx);
 
 	requestAnimationFrame(gameLoop);
