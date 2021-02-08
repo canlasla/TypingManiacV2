@@ -1,6 +1,15 @@
 export default class InputHandler {
-	constructor() {
+	constructor(game, ctx) {
 		this.inputElement = document.getElementById('input');
-		console.log(this.input);
+		document.addEventListener('keydown', (event) => {
+			switch (event.code) {
+				case 'Escape':
+					game.togglePause();
+					break;
+				case 'Space':
+					game.start(ctx);
+					break;
+			}
+		});
 	}
 }

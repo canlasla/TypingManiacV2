@@ -1,5 +1,7 @@
 import Word from '/src/word.js';
 import Score from '/src/score.js';
+import InputHandler from '/src/input.js';
+
 import { wordArray } from '/src/wordsarray.js';
 
 const GAMESTATE = {
@@ -10,11 +12,11 @@ const GAMESTATE = {
 };
 
 export default class Game {
-	constructor(gameWidth, gameHeight, ctx, input) {
+	constructor(gameWidth, gameHeight, ctx) {
 		this.gameWidth = gameWidth;
 		this.gameHeight = gameHeight;
-		this.input = input;
-		this.gamestate = GAMESTATE.RUNNING;
+
+		this.gamestate = GAMESTATE.MENU;
 		this.scoreElement = new Score(this, ctx);
 		this.speed = 1;
 		this.gameObjects = [
@@ -25,34 +27,37 @@ export default class Game {
 			),
 		];
 		this.lives = 3;
-
-		// new InputHandler(this.paddle, this);
+		this.input = new InputHandler(this, ctx);
 	}
 
-	start() {
+	start(ctx) {
 		if (
 			this.gamestate !== GAMESTATE.MENU &&
-			this.gamestate !== GAMESTATE.NEWLEVEL
+			this.gamestate !== GAMESTATE.GAMEOVER
 		)
 			return;
-
-		this.gameObjects.push(this.word);
-
+		this.lives = 3;
+		this.score = 0;
+		this.gameObjects = [
+			new Word(
+				this,
+				wordArray[Math.floor(Math.random() * wordArray.length)],
+				ctx
+			),
+		];
+		console.log(this.gameObjects);
 		this.gamestate = GAMESTATE.RUNNING;
 	}
 
-	update(deltaTime, ctx, input) {
-		// if (this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
+	update(deltaTime, ctx) {
+		if (this.lives === 0) this.gamestate = GAMESTATE.GAMEOVER;
 
-		// if (
-		// 	this.gamestate === GAMESTATE.PAUSED ||
-		// 	this.gamestate === GAMESTATE.MENU ||
-		// 	this.gamestate === GAMESTATE.GAMEOVER
-		// )
-		// 	return;
-
-		// [...this.gameObjects].forEach((object) => object.update(deltaTime));
-
+		if (
+			this.gamestate === GAMESTATE.PAUSED ||
+			this.gamestate === GAMESTATE.MENU ||
+			this.gamestate === GAMESTATE.GAMEOVER
+		)
+			return;
 		var i = 0;
 		for (i = 0; i < this.gameObjects.length; i++) {
 			var gone = this.gameObjects[i].update(deltaTime);
@@ -77,11 +82,10 @@ export default class Game {
 				}
 			}
 
-			if (input.inputElement.value == this.gameObjects[i].word) {
+			if (this.input.inputElement.value == this.gameObjects[i].word) {
 				this.gameObjects[i].gone = true;
-				input.inputElement.value = '';
+				this.input.inputElement.value = '';
 				this.scoreElement.score++;
-				console.log(this.scoreElement.score);
 			}
 		}
 	}

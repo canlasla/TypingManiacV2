@@ -27,10 +27,9 @@ export default class Word {
 
 	update(deltaTime) {
 		this.position.y += this.speed;
-		// alert('here');
-		// bottom of game
+
 		if (this.position.y > this.gameHeight) {
-			// this.game.lives--;
+			this.game.lives--;
 			this.gone = true;
 			return true;
 		}
