@@ -11,7 +11,6 @@
 #title {
 	color: white;
 	text-align: center;
-	height: 40px;
 }
 
 #canvas-container,
@@ -30,5 +29,5 @@
 #input {
 	display: inline;
 	color: white;
-	height: 25px;
+	height: 30px;
 }
