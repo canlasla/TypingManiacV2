@@ -89,13 +89,6 @@ export default class Game {
 	draw(ctx) {
 		[...this.gameObjects].forEach((object) => object.draw(ctx));
 
-		// ctx.font = '20px Consolas';
-		// ctx.fillStyle = 'white';
-		// ctx.fillText(
-		// 	'Score: ' + this.scoreElement.score,
-		// 	this.scoreElement.x,
-		// 	this.scoreElement.y
-		// );
 		this.scoreElement.draw(ctx);
 
 		if (this.gamestate === GAMESTATE.PAUSED) {

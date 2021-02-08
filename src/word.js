@@ -18,7 +18,10 @@ export default class Word {
 
 	draw(ctx) {
 		ctx.font = '20px Consolas';
-		ctx.fillStyle = 'white';
+		if (this.position.y < this.gameHeight / 3) ctx.fillStyle = 'lime';
+		else if (this.position.y < (2 * this.gameHeight) / 3)
+			ctx.fillStyle = 'yellow';
+		else ctx.fillStyle = 'red';
 		ctx.fillText(this.word, this.position.x, this.position.y);
 	}
 
