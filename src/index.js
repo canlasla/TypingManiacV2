@@ -1,4 +1,4 @@
-import Game from '/src/game.js';
+import Game from 'https://canlasla.github.io/TypingManiacV2/src/game.js';
 
 var canvas = document.getElementById('gameScreen');
 var ctx = canvas.getContext('2d');

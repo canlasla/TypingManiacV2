@@ -1,7 +1,7 @@
-import Word from '/src/word.js';
-import Score from '/src/score.js';
-import Lives from '/src/lives.js';
-import InputHandler from '/src/input.js';
+import Word from 'https://canlasla.github.io/TypingManiacV2/src/word.js';
+import Score from 'https://canlasla.github.io/TypingManiacV2/src/score.js';
+import Lives from 'https://canlasla.github.io/TypingManiacV2/src/lives.js';
+import InputHandler from 'https://canlasla.github.io/TypingManiacV2/src/input.js';
 
 import { wordArray } from '/src/wordsarray.js';
 
