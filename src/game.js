@@ -3,7 +3,7 @@ import Score from 'https://canlasla.github.io/TypingManiacV2/src/score.js';
 import Lives from 'https://canlasla.github.io/TypingManiacV2/src/lives.js';
 import InputHandler from 'https://canlasla.github.io/TypingManiacV2/src/input.js';
 
-import { wordArray } from '/src/wordsarray.js';
+import { wordArray } from 'https://canlasla.github.io/TypingManiacV2/src/wordsarray.js';
 
 const GAMESTATE = {
 	PAUSED: 0,
